@@ -1,0 +1,150 @@
+ {%  extends '::email/base.html.twig' %}
+
+{% block body %}
+    <div class="topbar">
+        <div class="header">
+            <a href=""><div class="logo"></div><div class="logo-small"></div></a>
+            <div class="search-input"><input type="text" id="search" placeholder="" ></div>
+            <!--	<a onclick="showNotification(\'\', \'1\')"><div class="menu_btn" id="notifications_btn" title=""><img src="assets/assets/images/notification.png" id="notifications_img" /></div></a>
+            -->   <a href="index.php?do=quoteusa" id="messages_url"><div class="menu_btn" title="Sending Messages">
+                    <img src="../assets/assets/images/message.png" />
+                </div>
+               </a>
+            <!--<a href="../account.php"><div class="menu_btn" title="Edit Account"><img src="../assets/assets/images/timeline.png" /></div></a>
+         -->  <a href="index.php?do=users&amp;action=edit&amp;id=5">
+                    <div class="menu_btn" title="Account"><img src="../assets/assets/images/icons/edit_h.png">
+                    </div>
+                </a>
+            <a href="/logout"><div class="menu_btn" title="Sign Out">
+                  LOGOUT
+                </div></a>
+
+            <!--    <a href="../admin/index.php"><div class="menu_btn" title="Admin"><img src="../assets/assets/images/icons/private_post_h.png"></div></a>
+        -->            <div class="notification-container">
+                <div class="notification-content">
+
+                    <div id="notifications-content"></div>
+                    <div class="notification-row"><div class="notification-padding"><a href=""> </a></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="search-container"></div>
+    </div>
+    <br><br>
+    {% if app.session.flashBag.has('success') %}
+        <div class="alert alert-success">
+            {% for msg in app.session.flashBag.get('success') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% for label, flashes in app.session.flashbag.all %}
+        {% for flash in flashes %}
+            <div class="alert alert-{{ label }}">
+                {{ flash }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <div class="container">
+        <div class="site-index">
+            <div class="body-content">
+                <div align="center"><h1>QUOTE NOW WHATEVER YOU NEED</h1>
+               <H2> <i>{{ app.user.username }}</i>, Suppliers are waiting your request!</H2>
+
+                </div>
+                <br>
+                <br>
+
+                <div class="row" style="background: #fff; padding:20px; ">
+                    <div class="col-md-12">
+                        <div id="fullform">
+
+                            <form role="form" action="{##}" enctype="multipart/form-data" method="POST">
+                                {{ form_start(form) }}
+                                <div class="#{$fa-css-prefix}-angle-down"> {{ form_errors(form) }}</div>
+                                {{ form_row(form.name,{ 'value': 'evaldez@bullatickets.com' })  }}
+                                {{ form_row(form.username,{ 'value': 'evaldez@bullatickets.com' }) }}
+                                {{ form_row(form.email, { 'value': 'evaldez@bullatickets.com' }) }}
+                                {{ form_row(form.emailTo, { 'value':  'iancasillasbuffon@gmail.com' }) }}
+                                {{ form_row(form.tracking, { value: random()}) }}
+                                {{ form_row(form.quotationSender, { 'value': 'evaldez@bullatickets.com' }) }}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form_row(form.category, {
+                                        'attr': { 'class': 'form-control' },
+                                        }) }}
+
+
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_row(form.product, {
+                                        'attr': { 'class': 'form-control' },
+                                        }) }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ form_row(form.quantity, {
+                                        'attr': { 'class': 'form-control' },
+                                        }) }}
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                         {{ form_row(form.city, {
+                                        'attr': { 'class': 'form-control' },
+                                        }) }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ form_row(form.file, {
+                                        'attr': { 'class': 'form-control' },
+                                        }) }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ form_row(form.qtyType, {
+                                        'attr': { 'class': 'form-control' },
+                                        }) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+
+                                    <div class="col-md-8">
+                                        {{ form_row(form.message, {
+                                        'attr': { 'class': 'form-control' }
+                                        }) }}
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        {{ form_row(form.time, {
+                                        'attr': { 'class': 'select2-drop-mask' }
+                                        }) }}
+                                        {{ form_row(form.captcha, {
+                                        'attr': { 'class': 'form-control' }
+
+
+                                        }) }}
+                                    </div>
+                                    <br />
+
+                                    <div class="col-md-12">
+
+                                        <input type="submit" style="margin-top:50px; color: #FFF;background-color: #337AB7;play: inline-block;padding: 8px 12px;margin-bottom: 0px;font-size: 14px; font-weight: 400; line-height: 1.42857; text-align: center; white-space: nowrap; vertical-align: middle; cursor: pointer; -moz-user-select: none; background-image: none;border: 12px solid transparent; border-radius: 8px;" class="btn btn-primary btn-lg btn-block" value="GET QUOTATIONS NOW!" />                  </div>
+
+                                </div>
+
+                                {{ form_end(form) }}
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,18 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>userInfo creation</h1>
+{{ app.user.id }}
+    {% set userid = app.user.id %}
+     <div>{{ userid }} este es el user id</div>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('userinfo') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

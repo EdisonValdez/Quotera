@@ -1,0 +1,3 @@
+routingEmail:
+    resource: "@EmailBundle/Resources/config/routing/routingEmail.yml"
+    prefix: /

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Quotera!{% endblock %}</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
+
+        {% stylesheets 'bundles/email/css/style.css'
+        filter='cssrewrite'
+        output='css/built/layout.css'
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% javascripts
+        'bundles/email/js/functions.js'
+        'bundles/email/js/jquery.js'
+        'bundles/email/js/jquery.timeago.js' filter='uglifyjs2'  %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    </body>
+</html>

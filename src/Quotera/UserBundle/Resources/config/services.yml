@@ -1,0 +1,7 @@
+services:
+#    user.example:
+#        class: User\UserBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+     quotera.user_info_type:
+         class: Quotera\UserBundle\Controller\userInfoType
+         arguments: [ @security.context ]

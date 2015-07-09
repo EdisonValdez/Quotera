@@ -1,0 +1,9 @@
+email:
+    path:     /email/
+    defaults: { _controller: EmailBundle:Email:Email }
+
+index:
+    path:     /
+    defaults: { _controller: EmailBundle:Email:index }
+
+

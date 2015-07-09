@@ -1,0 +1,6 @@
+ {%  extends '::email/base.html.twig' %}
+
+{% block body %}
+homepage {% if  is_granted('IS_AUTHENTICATED_REMEMBERED') %} <a href="/email">Send Quotes </a>{% endif %}
+{% endblock %}
+
